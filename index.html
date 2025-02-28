@@ -187,7 +187,7 @@ data = data.filter(row => row.assign === "ABHIGNA");
         let assignOptions = [...new Set(data.map(row => row.assign).filter(Boolean))];
         let statusOptions = [...new Set(data.map(row => row.status).filter(Boolean))];
 
-        let tableHeaders = ["Name", "Phone", "Email", "Work", "Assign To", "Status", "Remark", "Actions", "WhatsApp", "Msg to Assignee"];
+        let tableHeaders = ["Name", "Phone", "Email", "Work", "Assign To", "Status", "Remark", "Actions"];
 
         let output = `
         <style>
@@ -240,7 +240,7 @@ max-width: 100px;
 
         </style>
 
-        <h2 align-items: center >Retrieved Data</h2>
+        <h2 align-items: center >ASSIGNED TASKS</h2>
         <div id="filterContainer">
             <label>Work:</label>
             <select id="workFilter" onchange="filterTable()">
@@ -278,15 +278,7 @@ max-width: 100px;
                 <button onclick="editEntry(${row.id}, '${row.assign}', '${row.status}', '${row.remark || ""}')">Edit</button>
                
             </td>
-            <td>
-                <button style="background-color: green; color: white;" onclick="sendWhatsApp('${row.phone}', '${message}')">Send WhatsApp</button>
-                
-            </td>
-              </td>
- 		<td>
-                <button style="background-color: green; color: white;" onclick="sendWhatsApp('919182338327', 'Pls Update the status of ${row.name} *${row.work}* work  ')">Msg to Assignee</button>
-	
-            </td>
+        
         </tr>
     `;
 }).join("")}
